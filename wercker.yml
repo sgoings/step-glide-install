@@ -13,12 +13,17 @@ build:
           mv linux-amd64/glide glide
 
     - script:
-        name: simple test glide
-        code: ./glide --version
+        name: set PATH
+        code: export PATH="$(pwd):${PATH}"
 
     - script:
         name: prune
         code: rm -rf linux-amd64 glide-${GLIDE_VERSION}.tar.gz
+
+    - script:
+        name: simple test glide
+        code: glide --version
+
 deploy:
   steps:
     - script:
