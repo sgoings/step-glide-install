@@ -1,4 +1,0 @@
-box: golang
-build:
-  steps:
-    - validate-wercker-step
