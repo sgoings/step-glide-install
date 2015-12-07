@@ -10,11 +10,7 @@ build:
         code: |-
           curl -L -o glide-${GLIDE_VERSION}.tar.gz https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz
           tar -zxf glide-${GLIDE_VERSION}.tar.gz
-          mv linux-amd64/glide glide
-
-    - script:
-        name: set PATH
-        code: export PATH="$(pwd):${PATH}"
+          mv linux-amd64/glide /go/bin
 
     - script:
         name: prune
@@ -22,7 +18,7 @@ build:
 
     - script:
         name: simple test glide
-        code: glide --version
+        code: glide up
 
 deploy:
   steps:
