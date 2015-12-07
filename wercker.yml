@@ -5,15 +5,12 @@ build:
         name: set version
         code: export GLIDE_VERSION="0.7.2"
 
-    - install-packages:
-        packages: unzip
-
     - script:
         name: fetch glide
         code: |-
-          curl -L -o glide_linux_amd64.zip https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide_linux_amd64.zip
-          unzip glide_linux_amd64.zip
-          mv glide_dist/glide ./glide
+          curl -L -o glide-${GLIDE_VERSION}.tar.gz https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz
+          tar -zxf glide-${GLIDE_VERSION}.tar.gz
+          mv linux-amd64/glide glide
 
     - script:
         name: simple test glide
@@ -21,7 +18,7 @@ build:
 
     - script:
         name: prune
-        code: rm -rf __MACOSX glide_dist .git glide_linux_amd64.zip
+        code: rm -rf linux-amd64 glide-${GLIDE_VERSION}.tar.gz
 deploy:
   steps:
     - script:
