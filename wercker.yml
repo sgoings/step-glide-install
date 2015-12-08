@@ -10,7 +10,7 @@ build:
         code: |-
           curl -L -o glide-${GLIDE_VERSION}.tar.gz https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz
           tar -zxf glide-${GLIDE_VERSION}.tar.gz
-          mv linux-amd64/glide /go/bin
+          mv linux-amd64/glide /usr/local/bin/glide
 
     - script:
         name: prune
