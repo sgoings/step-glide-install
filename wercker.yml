@@ -1,0 +1,17 @@
+box: golang
+build:
+  steps:
+    - script:
+        name: set version
+        code: export GLIDE_VERSION="0.7.2"
+
+    - script:
+        name: fetch glide
+        code: |-
+          curl -L -o glide-${GLIDE_VERSION}.tar.gz https://github.com/Masterminds/glide/releases/download/${GLIDE_VERSION}/glide-${GLIDE_VERSION}-linux-amd64.tar.gz
+          tar -zxf glide-${GLIDE_VERSION}.tar.gz
+          mv linux-amd64/glide /go/bin
+
+    - script:
+        name: prune
+        code: rm -rf linux-amd64 glide-${GLIDE_VERSION}.tar.gz
