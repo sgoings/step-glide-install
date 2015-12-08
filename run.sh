@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eo pipefail
 
-debug "$(glide --version)"
+version="$(glide --version)"
+
+debug "${version}"
 
 glide install --cache
